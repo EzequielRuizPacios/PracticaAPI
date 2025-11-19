@@ -1,34 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+interface CatFact {
+  fact: string;
+  length: number;
+}
+
+export default function App() {
+  const [fact, setFact] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const CAT_FACT_ENTRYPOINT: string = "https://catfact.ninja/fact";
+
+  const fetchCatFact = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch(CAT_FACT_ENTRYPOINT);
+      const data: CatFact = await response.json();
+      setFact(data.fact);
+    } catch (error) {
+      setFact("❌ Error al obtener el fact");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCatFact();
+  }, []);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      <h1>🐱 Cat Facts</h1>
 
-export default App
+      {loading ? <p>Cargando...</p> : <p>{fact}</p>}
+
+      <button onClick={fetchCatFact}>Obtener otro dato</button>
+    </>
+  );
+}
