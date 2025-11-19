@@ -1,8 +1,106 @@
-p {
-    font-size: 18px;
-    max-width: 500px;
+.container {
+  padding: 20px;
+  font-family: system-ui, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-button { 
-    margin-top: 20px;
+.title {
+  margin: 0;
+}
+
+.subtitle {
+  margin-top: 6px;
+  color: #555;
+}
+
+/* ===== ÚLTIMO FACT ===== */
+.card {
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fafafa;
+}
+
+.cardLeft {
+  flex: 1;
+}
+
+.factTitle {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+}
+
+.factText {
+  margin: 0;
+  font-size: 16px;
+  max-width: 500px;
+}
+
+/* ===== BOTONES ===== */
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.button {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.buttonSecondary {
+  padding: 8px 12px;
+  cursor: pointer;
+  background: #f0f0f0;
+}
+
+/* ===== HISTORIAL ===== */
+.historyHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.historyList {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 10px;
+  display: grid;
+  gap: 8px;
+}
+
+.historyItem {
+  border: 1px solid #eee;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  background: #fff;
+}
+
+.historyText {
+  flex: 1;
+}
+
+.historyMeta {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #777;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.smallButton {
+  padding: 6px 10px;
+  cursor: pointer;
 }
